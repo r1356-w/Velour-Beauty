@@ -3,7 +3,7 @@
 services:
   # Backend Service
   - type: web
-    name: velour-beauty-api
+    name: velour-beauty
     env: node
     repo: https://github.com/r1356-w/Velour-Beauty.git
     rootDir: backend
@@ -32,11 +32,11 @@ services:
     publishDir: build
     envVars:
       - key: REACT_APP_API_URL
-        value: https://velour-beauty-api.onrender.com/api
+        value: https://velour-beauty.onrender.com/api
     routes:
       - type: rewrite
         source: /api/*
-        destination: https://velour-beauty-api.onrender.com/api/*
+        destination: https://velour-beauty.onrender.com/api/*
       - type: file
         source: /*
         destination: /index.html
