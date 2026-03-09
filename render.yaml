@@ -11,7 +11,7 @@ services:
     startCommand: "node server.js"
     envVars:
       - key: MONGODB_URI
-        value: mongodb+srv://randorij27_db_user:ShopHup2026@shophup.7l4igxy.mongodb.net/?appName=ShopHup
+        sync: false # Set this in Render dashboard for security
       - key: JWT_SECRET
         value: velour_beauty_render_production_2024
       - key: JWT_EXPIRES_IN
