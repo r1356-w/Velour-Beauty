@@ -245,19 +245,21 @@ app.get("/api/seed", async (req, res) => {
     // Create sample reviews
     const reviews = [
       {
-        user: createdUsers[0]._id,
-        product: createdProducts[0]._id,
+        userId: createdUsers[0]._id,
+        userName: createdUsers[0].name,
+        productId: createdProducts[0]._id,
         rating: 5,
         title: "Amazing powder!",
-        comment: "This powder is incredible. It makes my skin look flawless and lasts all day.",
+        body: "This powder is incredible. It makes my skin look flawless and lasts all day.",
         helpful: 12
       },
       {
-        user: createdUsers[0]._id,
-        product: createdProducts[1]._id,
+        userId: createdUsers[0]._id,
+        userName: createdUsers[0].name,
+        productId: createdProducts[1]._id,
         rating: 4,
         title: "Good but not great",
-        comment: "Nice powder but a bit expensive for what you get.",
+        body: "Nice powder but a bit expensive for what you get.",
         helpful: 3
       }
     ];
