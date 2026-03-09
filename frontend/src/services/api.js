@@ -4,7 +4,7 @@
 // ============================================================
 import axios from "axios";
 
-const BASE = process.env.REACT_APP_API_URL || "/api";
+const BASE = "https://velour-beauty.onrender.com/api";
 
 // إنشاء نسخة Axios مخصصة
 const api = axios.create({ baseURL: BASE });
