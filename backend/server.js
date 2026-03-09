@@ -70,14 +70,14 @@ app.get("/api/seed", async (req, res) => {
 
     // Create categories
     const categories = [
-      { name: "Loose Powder", description: "Setting and finishing powders" },
-      { name: "Eyeshadow", description: "Eye makeup palettes and singles" },
-      { name: "Lipstick", description: "Lip colors and lip products" },
-      { name: "Foundation", description: "Base makeup and complexion products" },
-      { name: "Blush", description: "Cheek colors and blush products" },
-      { name: "Mascara", description: "Eyelash enhancing products" },
-      { name: "Skincare", description: "Skincare and treatment products" },
-      { name: "Brushes", description: "Makeup brushes and tools" }
+      { name: "Loose Powder", description: "Setting and finishing powders", icon: "powder", slug: "loose-powder" },
+      { name: "Eyeshadow", description: "Eye makeup palettes and singles", icon: "eye", slug: "eyeshadow" },
+      { name: "Lipstick", description: "Lip colors and lip products", icon: "lip", slug: "lipstick" },
+      { name: "Foundation", description: "Base makeup and complexion products", icon: "face", slug: "foundation" },
+      { name: "Blush", description: "Cheek colors and blush products", icon: "blush", slug: "blush" },
+      { name: "Mascara", description: "Eyelash enhancing products", icon: "mascara", slug: "mascara" },
+      { name: "Skincare", description: "Skincare and treatment products", icon: "skin", slug: "skincare" },
+      { name: "Brushes", description: "Makeup brushes and tools", icon: "brush", slug: "brushes" }
     ];
     
     const createdCategories = await Category.insertMany(categories);
