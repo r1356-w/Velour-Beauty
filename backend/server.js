@@ -271,7 +271,7 @@ app.get("/api/seed", async (req, res) => {
     const promoCodes = [
       {
         code: "WELCOME20",
-        discount: 20,
+        value: 20,
         type: "percentage",
         minOrder: 50,
         maxDiscount: 30,
@@ -281,7 +281,7 @@ app.get("/api/seed", async (req, res) => {
       },
       {
         code: "SUMMER15",
-        discount: 15,
+        value: 15,
         type: "percentage",
         minOrder: 30,
         maxDiscount: 25,
