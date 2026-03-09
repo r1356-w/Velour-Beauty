@@ -272,22 +272,14 @@ app.get("/api/seed", async (req, res) => {
       {
         code: "WELCOME20",
         value: 20,
-        type: "percentage",
-        minOrder: 50,
-        maxDiscount: 30,
-        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
-        usageLimit: 100,
-        used: 0
+        type: "percent",
+        minOrder: 50
       },
       {
         code: "SUMMER15",
         value: 15,
-        type: "percentage",
-        minOrder: 30,
-        maxDiscount: 25,
-        expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
-        usageLimit: 200,
-        used: 0
+        type: "percent",
+        minOrder: 30
       }
     ];
     
