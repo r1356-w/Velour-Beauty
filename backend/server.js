@@ -103,7 +103,7 @@ app.get("/api/seed", async (req, res) => {
     const createdUsers = await User.insertMany(hashedUsers);
     console.log("Created users:", createdUsers.length);
 
-    // Create products with unique images
+    // Create products with unique images and category references
     const products = [
       {
         name: "Velvet Veil Setting Powder",
@@ -114,6 +114,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 342,
         featured: true,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1`,
         images: [
           `https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1`,
@@ -132,6 +133,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 198,
         featured: false,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=3`,
         images: [`https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=3`],
         description: "Micro-milled powder that diffuses light for a soft-focus, camera-ready finish.",
@@ -147,6 +149,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 156,
         featured: false,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=4`,
         images: [`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=4`],
         description: "Professional-grade HD powder for flawless photography and video.",
@@ -162,6 +165,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 89,
         featured: false,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=5`,
         images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=5`],
         description: "Radiant finishing powder with subtle luminous particles for a natural glow.",
@@ -177,6 +181,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 234,
         featured: true,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=6`,
         images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=6`],
         description: "Oil-absorbing translucent powder that controls shine for 12 hours.",
@@ -192,6 +197,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 67,
         featured: false,
         category: "Loose Powder",
+        categoryId: createdCategories[0]._id, // Loose Powder
         image: `https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=7`,
         images: [`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=7`],
         description: "Luxurious setting powder with diamond dust for a radiant finish.",
@@ -207,6 +213,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 445,
         featured: true,
         category: "Eyeshadow",
+        categoryId: createdCategories[1]._id, // Eyeshadow
         image: `https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=8`,
         images: [`https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=8`],
         description: "12-shade nude palette with matte and shimmer finishes.",
@@ -222,6 +229,7 @@ app.get("/api/seed", async (req, res) => {
         sold: 178,
         featured: false,
         category: "Eyeshadow",
+        categoryId: createdCategories[1]._id, // Eyeshadow
         image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=9`,
         images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=9`],
         description: "Complete smoky eye kit with 6 essential shades.",
