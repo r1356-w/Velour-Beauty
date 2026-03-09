@@ -1,0 +1,182 @@
+/* ============================================================
+   index.css — النمط العام لتطبيق Velour Beauty
+   نظام ألوان بنفسجي كلاسيكي هادئ وفاخر
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ─────────────────────────── */
+:root {
+  --velour:   #7B3FA0;
+  --velour-d: #4A1876;
+  --velour-l: #f5f0ff;
+  --accent:   #C084E8;
+  --muted:    #A78BC0;
+  --cream:    #fdfaff;
+  --border:   #e9d5ff;
+}
+
+/* ── Base ──────────────────────────────────── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: var(--cream);
+  color: #2e1065;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+/* ── Scrollbar ────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--velour-l); }
+::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--velour); }
+
+/* ── Animations ───────────────────────────── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes shimmer  { 0% { background-position:-200% 0; } 100% { background-position:200% 0; } }
+@keyframes spin     { to { transform: rotate(360deg); } }
+
+.animate-fade-up { animation: fadeUp 0.45s ease both; }
+.animate-fade-in { animation: fadeIn 0.35s ease both; }
+
+/* ── Skeleton Loader ──────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #e9d5ff 25%, #f3e8ff 50%, #e9d5ff 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* ── Spinner ──────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 20px; height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--velour);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* ── Components ───────────────────────────── */
+@layer components {
+
+  /* Button */
+  .btn-velour {
+    @apply inline-flex items-center justify-center gap-2 bg-velour-700 text-white
+           font-sans font-semibold px-6 py-3 rounded-full transition-all duration-200
+           hover:bg-velour-900 hover:shadow-velour active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-velour-400 focus:ring-offset-2
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-velour-700 text-velour-700
+           font-sans font-semibold px-6 py-3 rounded-full transition-all duration-200
+           hover:bg-velour-700 hover:text-white active:scale-95
+           focus:outline-none focus:ring-2 focus:ring-velour-400 focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 border border-velour-200 text-velour-900
+           font-sans font-medium px-6 py-3 rounded-full transition-all duration-200
+           hover:border-velour-700 hover:text-velour-700 active:scale-95;
+  }
+
+  /* Card */
+  .card {
+    @apply bg-white rounded-2xl border border-velour-100 overflow-hidden
+           transition-all duration-300 hover:shadow-velour hover:-translate-y-1;
+  }
+
+  /* Input */
+  .input-field {
+    @apply w-full border border-velour-200 rounded-xl px-4 py-3 text-sm font-sans
+           bg-white text-velour-900 placeholder-muted
+           focus:outline-none focus:ring-2 focus:ring-accent focus:border-velour-700
+           transition-all duration-200;
+  }
+
+  /* Badge */
+  .badge          { @apply inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded-full; }
+  .badge-purple   { @apply badge bg-velour-100 text-velour-700; }
+  .badge-green    { @apply badge bg-green-100 text-green-700; }
+  .badge-amber    { @apply badge bg-amber-100 text-amber-700; }
+  .badge-rose     { @apply badge bg-rose-100 text-rose-600; }
+  .badge-velour   { @apply badge bg-velour-700 text-white; }
+  .badge-pink     { @apply badge bg-pink-500 text-white; }
+
+  /* Star */
+  .star        { color: #C084E8; }
+  .star-empty  { color: #e9d5ff; }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--velour), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Soft background */
+  .bg-velour-soft {
+    background: radial-gradient(circle at 20% 50%, rgba(192,132,232,.1) 0%, transparent 55%),
+                radial-gradient(circle at 80% 20%, rgba(123,63,160,.07) 0%, transparent 45%),
+                var(--cream);
+  }
+}
+
+/* ── Toast ────────────────────────────────── */
+.toast {
+  @apply flex items-center gap-3 bg-white border border-velour-200
+         rounded-2xl px-5 py-4 shadow-velour-lg text-sm font-medium;
+  animation: fadeUp 0.3s ease;
+  max-width: 320px;
+}
+.toast.success { @apply border-green-200 text-green-700; }
+.toast.error   { @apply border-rose-200 text-rose-600; }
+.toast.info    { @apply border-velour-200 text-velour-700; }
+
+/* ── Order Tracking Timeline ──────────────── */
+.timeline { position: relative; padding-left: 2.8rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px; top: 6px; bottom: 6px;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item    { position: relative; padding-bottom: 1.5rem; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-dot {
+  position: absolute;
+  left: -2.8rem;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.tl-dot.done    { background: var(--velour); border-color: var(--velour); color: #fff; }
+.tl-dot.current { background: var(--velour-l); border-color: var(--velour); animation: pulse 1.5s infinite; }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
+
+/* ── Checkout Stepper ─────────────────────── */
+.step-dot {
+  @apply w-10 h-10 rounded-full border-2 border-velour-200 flex items-center justify-center
+         text-sm font-bold text-muted transition-all duration-300 bg-white z-10;
+}
+.step-dot.active { @apply bg-velour-700 border-velour-700 text-white; }
+.step-dot.done   { @apply bg-velour-700 border-velour-700 text-white; }
+.step-line       { @apply flex-1 h-0.5 bg-velour-200 transition-all duration-500 mt-5; }
+.step-line.done  { @apply bg-velour-700; }
