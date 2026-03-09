@@ -1,0 +1,42 @@
+# Render.com Configuration for Velour Beauty
+
+services:
+  # Backend Service
+  - type: web
+    name: velour-beauty-api
+    env: node
+    repo: https://github.com/r1356-w/Velour-Beauty.git
+    rootDir: backend
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      - key: MONGODB_URI
+        value: mongodb+srv://randorij27_db_user:ShopHup2026@shophup.7l4igxy.mongodb.net/?appName=ShopHup
+      - key: JWT_SECRET
+        value: velour_beauty_render_production_2024
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+
+  # Frontend Service
+  - type: web
+    name: velour-beauty-frontend
+    env: static
+    repo: https://github.com/r1356-w/Velour-Beauty.git
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    publishDir: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://velour-beauty-api.onrender.com/api
+    routes:
+      - type: rewrite
+        source: /api/*
+        destination: https://velour-beauty-api.onrender.com/api/*
+      - type: file
+        source: /*
+        destination: /index.html

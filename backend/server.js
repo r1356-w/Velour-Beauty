@@ -2,7 +2,8 @@ const express = require("express");
 const cors = require("cors");
 
 const connectDB = require("./config/database");
-const { PORT, CLIENT_URL } = require("./config");
+const PORT = process.env.PORT || 5020;
+const { CLIENT_URL } = require("./config");
 
 const authRoutes = require("./routes/auth");
 const productsRoutes = require("./routes/products");
