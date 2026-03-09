@@ -4,10 +4,14 @@
 // ============================================================
 import axios from "axios";
 
-const BASE = "https://velour-beauty.onrender.com/api";
+// Use global API URL from config.js
+const BASE_URL = window.API_BASE_URL || "https://velour-beauty.onrender.com/api";
 
 // إنشاء نسخة Axios مخصصة
-const api = axios.create({ baseURL: BASE });
+const api = axios.create({ baseURL: BASE_URL });
+
+// Debug logging
+console.log("API Base URL:", BASE_URL);
 
 // إرفاق رمز JWT تلقائياً مع كل طلب
 api.interceptors.request.use((config) => {
