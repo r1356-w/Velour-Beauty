@@ -1,11 +1,11 @@
 // ============================================================
-// components/ui/index.jsx — مكونات UI المشتركة
+// components/ui/index.jsx — Common UI Components
 // StarRating | Spinner | PageLoader | Skeleton | Modal
 // Badge | PriceDisplay | EmptyState | TagBadge
 // ============================================================
 import React from "react";
 
-/* ── نجوم التقييم ──────────────────────────── */
+/* ── Rating Stars ──────────────────────────── */ 
 export const StarRating = ({ rating = 0, max = 5, size = "md", interactive = false, onChange }) => {
   const sizes = { sm: "text-sm", md: "text-base", lg: "text-xl" };
   return (
@@ -23,7 +23,7 @@ export const StarRating = ({ rating = 0, max = 5, size = "md", interactive = fal
   );
 };
 
-/* ── Spinner دوار ──────────────────────────── */
+/* ── Spinner Component ──────────────────────────── */
 export const Spinner = ({ size = "md", className = "" }) => {
   const sizes = { sm: "w-4 h-4", md: "w-6 h-6", lg: "w-10 h-10" };
   return (
@@ -31,17 +31,17 @@ export const Spinner = ({ size = "md", className = "" }) => {
   );
 };
 
-/* ── شاشة التحميل الكاملة ─────────────────── */
+/* ── Full Page Loader ─────────────────── */
 export const PageLoader = () => (
   <div className="flex items-center justify-center min-h-[60vh]">
     <div className="text-center">
       <Spinner size="lg" className="mx-auto mb-4" />
-      <p className="text-muted text-sm">جاري التحميل…</p>
+      <p className="text-muted text-sm">Loading…</p>
     </div>
   </div>
 );
 
-/* ── Skeleton للبطاقات ─────────────────────── */
+/* ── Product Skeleton ─────────────────────── */
 export const ProductSkeleton = () => (
   <div className="bg-white rounded-2xl border border-velour-100 overflow-hidden">
     <div className="skeleton h-56 w-full" />
@@ -54,7 +54,7 @@ export const ProductSkeleton = () => (
   </div>
 );
 
-/* ── نافذة منبثقة ──────────────────────────── */
+/* ── Modal Window ──────────────────────────── */
 export const Modal = ({ isOpen, onClose, title, children, maxW = "max-w-md" }) => {
   if (!isOpen) return null;
   return (
@@ -81,7 +81,7 @@ export const Modal = ({ isOpen, onClose, title, children, maxW = "max-w-md" }) =
   );
 };
 
-/* ── شارة الوسوم ───────────────────────────── */
+/* ── Tag Badge ───────────────────────────── */
 export const TagBadge = ({ tag }) => {
   const map = {
     bestseller:    { label: "✨ Bestseller",    cls: "bg-velour-700 text-white" },
@@ -98,7 +98,7 @@ export const TagBadge = ({ tag }) => {
   );
 };
 
-/* ── عرض السعر ─────────────────────────────── */
+/* ── Price Display ─────────────────────── */
 export const PriceDisplay = ({ price, originalPrice, size = "md" }) => {
   const textSizes = { sm: "text-sm", md: "text-base", lg: "text-xl" };
   const discount = originalPrice ? Math.round((1 - price / originalPrice) * 100) : 0;
@@ -115,7 +115,7 @@ export const PriceDisplay = ({ price, originalPrice, size = "md" }) => {
   );
 };
 
-/* ── حالة فارغة ────────────────────────────── */
+/* ── Empty State ────────────────────────────── */
 export const EmptyState = ({ icon = "🌸", title, description, action }) => (
   <div className="text-center py-20 px-4">
     <div className="text-5xl mb-4">{icon}</div>

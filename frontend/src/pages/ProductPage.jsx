@@ -1,5 +1,5 @@
 // ============================================================
-// pages/ProductPage.jsx — صفحة تفاصيل المنتج
+// pages/ProductPage.jsx — Product Details Page
 // ============================================================
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -51,24 +51,24 @@ export default function ProductPage() {
   }, [id, user]);
 
   const handleAddToCart = async () => {
-    if (!user) { toast.error("الرجاء تسجيل الدخول"); navigate("/auth"); return; }
+    if (!user) { toast.error("Please login"); navigate("/auth"); return; }
     setAdding(true);
     try {
       await addToCart(product.id, qty, shade);
-      toast.success(`${product.name} أُضيف للسلة 🛒`);
+      toast.success(`${product.name} added to cart 🛒`);
     } catch (e) { toast.error(e.message); }
     finally { setAdding(false); }
   };
 
   const handleWish = async () => {
-    if (!user) { toast.error("الرجاء تسجيل الدخول"); navigate("/auth"); return; }
+    if (!user) { toast.error("Please login"); navigate("/auth"); return; }
     await wishlistAPI.toggle(product.id);
     setWished((v) => !v);
-    toast.info(wished ? "أُزيل من المفضلة" : "أُضيف للمفضلة 💜");
+    toast.info(wished ? "Removed from favorites" : "Added to favorites 💜");
   };
 
   const submitReview = async () => {
-    if (!rvBody.trim()) { toast.error("الرجاء كتابة مراجعة"); return; }
+    if (!rvBody.trim()) { toast.error("Please write a review"); return; }
     setSubmitting(true);
     try {
       await reviewAPI.create({ productId: id, rating: rvRating, title: rvTitle, body: rvBody });
@@ -76,7 +76,7 @@ export default function ProductPage() {
       setReviews(data.reviews);
       setReviewModal(false);
       setRvRating(5); setRvTitle(""); setRvBody("");
-      toast.success("شكراً! تمت إضافة مراجعتك ✓");
+      toast.success("Thanks! Your review has been added ✓");
     } catch (e) { toast.error(e.message); }
     finally { setSubmitting(false); }
   };

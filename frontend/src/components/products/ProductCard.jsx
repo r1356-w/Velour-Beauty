@@ -20,7 +20,7 @@ export default function ProductCard({ product, wishlistIds = [], onWishToggle })
   const handleAddToCart = async (e) => {
     e.stopPropagation();
     if (!user) {
-      toast.error("الرجاء تسجيل الدخول أولاً");
+      toast.error("Please login first");
       navigate("/auth");
       return;
     }
@@ -28,9 +28,9 @@ export default function ProductCard({ product, wishlistIds = [], onWishToggle })
     setAdding(true);
     try {
       await addToCart(product.id, 1, product.shades?.[0] || null);
-      toast.success(`${product.name} أُضيف للسلة 🛒`);
+      toast.success(`${product.name} added to cart 🛒`);
     } catch {
-      toast.error("حدث خطأ");
+      toast.error("An error occurred");
     } finally {
       setAdding(false);
     }
@@ -39,7 +39,7 @@ export default function ProductCard({ product, wishlistIds = [], onWishToggle })
   const handleWishToggle = async (e) => {
     e.stopPropagation();
     if (!user) {
-      toast.error("الرجاء تسجيل الدخول");
+      toast.error("Please login");
       navigate("/auth");
       return;
     }
@@ -48,9 +48,9 @@ export default function ProductCard({ product, wishlistIds = [], onWishToggle })
       await wishlistAPI.toggle(product.id);
       setWished((v) => !v);
       onWishToggle?.(product.id);
-      toast.info(wished ? "أُزيل من المفضلة" : "أُضيف للمفضلة 💜");
+      toast.info(wished ? "Removed from favorites" : "Added to favorites 💜");
     } catch {
-      toast.error("حدث خطأ");
+      toast.error("An error occurred");
     }
   };
 
@@ -83,7 +83,7 @@ export default function ProductCard({ product, wishlistIds = [], onWishToggle })
 
         {product.stock === 0 && (
           <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
-            <span className="badge badge-amber text-xs">نفد المخزون</span>
+            <span className="badge badge-amber text-xs">Out of Stock</span>
           </div>
         )}
       </div>

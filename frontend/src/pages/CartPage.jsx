@@ -32,18 +32,18 @@ export default function CartPage() {
   const applyPromo = () => {
     const p = PROMOS.find((x) => x.code === promo.trim().toUpperCase());
     if (!p || subtotal < p.min) {
-      setPromoMsg({ ok: false, text: "كود غير صالح أو لا ينطبق على هذا الطلب" });
+      setPromoMsg({ ok: false, text: "Invalid code or doesn't apply to this order" });
       setDiscount(0); setPromoCode("");
       return;
     }
     const d = p.type === "percent" ? subtotal * p.value : p.value;
     setDiscount(d);
     setPromoCode(p.code);
-    setPromoMsg({ ok: true, text: p.type === "percent" ? `خصم ${p.value * 100}% مطبّق ✓` : `خصم $${p.value} مطبّق ✓` });
+    setPromoMsg({ ok: true, text: p.type === "percent" ? `${p.value * 100}% discount applied ✓` : `$${p.value} discount applied ✓` });
   };
 
   const goCheckout = () => {
-    if (!user) { toast.error("الرجاء تسجيل الدخول أولاً"); navigate("/auth"); return; }
+    if (!user) { toast.error("Please login first"); navigate("/auth"); return; }
     navigate("/checkout", { state: { discount, promoCode } });
   };
 

@@ -38,7 +38,7 @@ export default function CheckoutPage() {
 
   const nextStep = () => {
     if (step === 0) {
-      if (!addr.name || !addr.street || !addr.city || !addr.zip) { toast.error("الرجاء تعبئة الحقول المطلوبة"); return; }
+      if (!addr.name || !addr.street || !addr.city || !addr.zip) { toast.error("Please fill required fields"); return; }
     }
     setStep((v) => v + 1);
   };
@@ -52,7 +52,7 @@ export default function CheckoutPage() {
         promoCode:       promoCode || undefined,
       });
       await clearCart();
-      toast.success("تم تقديم طلبك! 💜");
+      toast.success("Order placed! 💜");
       navigate(`/orders/${data.order.id}`);
     } catch (e) {
       toast.error(e.message);
