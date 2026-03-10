@@ -1,18 +1,18 @@
 // ============================================================
-// middleware/auth.js — التحقق من JWT
+// middleware/auth.js — JWT Authentication
 // ============================================================
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config");
 
 /**
- * protect — يحمي المسارات التي تتطلب تسجيل دخول
- * يتحقق من رمز Bearer في الـ Authorization header
+ * protect — Protects routes that require authentication
+ * Verifies Bearer token in Authorization header
  */
 const protect = (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ success: false, message: "غير مصرح — لم يُقدَّم رمز" });
+    return res.status(401).json({ success: false, message: "Unauthorized — No token provided" });
   }
 
   const token = authHeader.split(" ")[1];
@@ -22,17 +22,17 @@ const protect = (req, res, next) => {
     req.user = decoded; // { id, email, role }
     next();
   } catch {
-    return res.status(401).json({ success: false, message: "الرمز غير صالح أو منتهي الصلاحية" });
+    return res.status(401).json({ success: false, message: "Invalid or expired token" });
   }
 };
 
 /**
- * adminOnly — يُقيِّد الوصول للمسؤولين فقط
- * يجب تشغيله بعد protect()
+ * adminOnly — Restricts access to admins only
+ * Must be used after protect()
  */
 const adminOnly = (req, res, next) => {
   if (req.user?.role !== "admin") {
-    return res.status(403).json({ success: false, message: "محظور — يلزم صلاحيات المسؤول" });
+    return res.status(403).json({ success: false, message: "Forbidden — Admin privileges required" });
   }
   next();
 };

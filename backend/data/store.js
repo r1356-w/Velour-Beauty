@@ -1,6 +1,6 @@
 // ============================================================
-// data/store.js — قاعدة البيانات في الذاكرة
-// في الإنتاج: استبدل بـ MongoDB أو PostgreSQL
+// data/store.js — In-memory database
+// In production: replace with MongoDB or PostgreSQL
 // ============================================================
 
 const users = [
@@ -8,7 +8,7 @@ const users = [
     id: "u1",
     name: "Admin User",
     email: "admin@velour.com",
-    // كلمة المرور: admin123
+    // Password: admin123
     password: "$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lh7y",
     role: "admin",
     createdAt: "2024-01-01T00:00:00.000Z",
@@ -17,7 +17,7 @@ const users = [
     id: "u2",
     name: "Sara Johnson",
     email: "sara@example.com",
-    // كلمة المرور: user123
+    // Password: user123
     password: "$2a$10$TwXmN3p5t8kLqVrWs1uOEuZ6yVjXF9PkQ8mRnDHsGaA4cJBiV5.Oy",
     role: "user",
     createdAt: "2024-02-15T00:00:00.000Z",
