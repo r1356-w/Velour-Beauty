@@ -1,13 +1,13 @@
 // ============================================================
-// services/api.js — طبقة التواصل مع API
-// جميع الطلبات تمر من هنا باستخدام Axios
+// services/api.js — API Service Layer
+// All requests pass through here using Axios
 // ============================================================
 import axios from "axios";
 
 // Use environment variable from .env.production with strong fallback
 const BASE_URL = process.env.REACT_APP_API_URL || "https://velour-beauty.onrender.com/api";
 
-// إنشاء نسخة Axios مخصصة
+// Create custom Axios instance
 const api = axios.create({ baseURL: BASE_URL });
 
 // Debug logging - show both env and final URL
@@ -22,23 +22,23 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// معالج الأخطاء العام
+// General error handler
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    const message = err.response?.data?.message || "حدث خطأ ما";
+    const message = err.response?.data?.message || "An error occurred";
     return Promise.reject(new Error(message));
   }
 );
 
-// ── المصادقة ─────────────────────────────────
+// ── Authentication ─────────────────────────────────
 export const authAPI = {
   register: (data)   => api.post("/auth/register", data),
   login:    (data)   => api.post("/auth/login", data),
   getMe:    ()       => api.get("/auth/me"),
 };
 
-// ── المنتجات ──────────────────────────────────
+// ── Products ──────────────────────────────────
 export const productAPI = {
   getAll:      (params) => api.get("/products", { params }),
   getFeatured: ()       => api.get("/products/featured"),
@@ -48,12 +48,12 @@ export const productAPI = {
   delete:      (id)     => api.delete(`/products/${id}`),
 };
 
-// ── التصنيفات ─────────────────────────────────
+// ── Categories ─────────────────────────────────
 export const categoryAPI = {
   getAll: () => api.get("/categories"),
 };
 
-// ── التقييمات ─────────────────────────────────
+// ── Reviews ─────────────────────────────────
 export const reviewAPI = {
   getByProduct: (productId) => api.get("/reviews", { params: { productId } }),
   create:       (data)      => api.post("/reviews", data),
@@ -61,7 +61,7 @@ export const reviewAPI = {
   delete:       (id)        => api.delete(`/reviews/${id}`),
 };
 
-// ── السلة ─────────────────────────────────────
+// ── Cart ─────────────────────────────────────
 export const cartAPI = {
   get:    ()                      => api.get("/cart"),
   add:    (productId, qty, shade) => api.post("/cart", { productId, qty, shade }),
@@ -70,20 +70,20 @@ export const cartAPI = {
   clear:  ()                      => api.delete("/cart"),
 };
 
-// ── الطلبات ───────────────────────────────────
+// ── Orders ───────────────────────────────────
 export const orderAPI = {
   getAll:   ()     => api.get("/orders"),
   getById:  (id)   => api.get(`/orders/${id}`),
   checkout: (data) => api.post("/orders", data),
 };
 
-// ── المفضلة ───────────────────────────────────
+// ── Wishlist ───────────────────────────────────
 export const wishlistAPI = {
   get:    ()   => api.get("/wishlist"),
   toggle: (id) => api.post(`/wishlist/${id}`),
 };
 
-// ── الإدارة ───────────────────────────────────
+// ── Admin ───────────────────────────────────
 export const adminAPI = {
   getDashboard: ()      => api.get("/admin/dashboard"),
   getUsers:     ()      => api.get("/admin/users"),

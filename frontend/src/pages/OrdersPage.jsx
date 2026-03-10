@@ -1,5 +1,5 @@
 // ============================================================
-// pages/OrdersPage.jsx — قائمة الطلبات
+// pages/OrdersPage.jsx — Orders List
 // ============================================================
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -71,7 +71,7 @@ export function OrdersPage() {
 }
 
 // ============================================================
-// pages/OrderDetailPage.jsx — تفاصيل وتتبع طلب واحد
+// pages/OrderDetailPage.jsx — Single order details and tracking
 // ============================================================
 export function OrderDetailPage() {
   const { user }    = useAuth();
@@ -79,7 +79,7 @@ export function OrderDetailPage() {
   const [order, setOrder]   = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // استخراج ID من URL
+  // Extract ID from URL
   const id = window.location.pathname.split("/").pop();
 
   useEffect(() => {

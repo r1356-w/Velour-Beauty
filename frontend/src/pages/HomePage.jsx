@@ -1,5 +1,5 @@
 // ============================================================
-// pages/HomePage.jsx — الصفحة الرئيسية
+// pages/HomePage.jsx — Home Page
 // ============================================================
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -56,12 +56,12 @@ export default function HomePage() {
     <div>
       {/* ══ Hero ══════════════════════════════════════════════ */}
       <section className="min-h-[88vh] bg-gradient-to-br from-velour-950 via-velour-900 to-velour-700 flex items-center relative overflow-hidden">
-        {/* دوائر الخلفية */}
+        {/* Background circles */}
         <div className="absolute top-[10%] right-[8%] w-80 h-80 bg-accent/20 rounded-full blur-[70px]" />
         <div className="absolute bottom-[10%] left-[5%] w-64 h-64 bg-pink-500/15 rounded-full blur-[60px]" />
 
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center py-20 relative z-10">
-          {/* نص */}
+          {/* Text */}
           <div className="text-white animate-fade-up">
             <div className="inline-flex items-center gap-2 bg-accent/20 border border-accent/40 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-6">
               ✦ New Season Collection
@@ -92,7 +92,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* صور */}
+          {/* Images */}
           <div className="hidden md:grid grid-cols-2 gap-3 h-[460px]">
             <div className="row-span-2 rounded-2xl overflow-hidden">
               <img src="/assets/products/p3.jpg" className="w-full h-full object-cover brightness-90" alt="Amethyst Dreams Palette" onError={(e) => { e.target.src = '/assets/products/fallback.png'; }} />

@@ -1,5 +1,5 @@
 // ============================================================
-// pages/WishlistPage.jsx — قائمة المفضلة
+// pages/WishlistPage.jsx — Wishlist Page
 // ============================================================
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -52,7 +52,7 @@ export function WishlistPage() {
 }
 
 // ============================================================
-// pages/AuthPage.jsx — تسجيل الدخول وإنشاء حساب
+// pages/AuthPage.jsx — Login and Registration
 // ============================================================
 export function AuthPage() {
   const { login, register } = useAuth();
@@ -65,8 +65,8 @@ export function AuthPage() {
   const [password, setPassword] = useState("");
 
   const submit = async () => {
-    if (!email || !password) { toast.error("الرجاء تعبئة جميع الحقول"); return; }
-    if (mode === "register" && !name) { toast.error("الاسم مطلوب"); return; }
+    if (!email || !password) { toast.error("Please fill all fields"); return; }
+    if (mode === "register" && !name) { toast.error("Name is required"); return; }
     setLoading(true);
     try {
       if (mode === "login") {

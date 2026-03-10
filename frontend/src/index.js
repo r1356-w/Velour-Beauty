@@ -1,5 +1,5 @@
 // ============================================================
-// index.js — نقطة دخول React
+// index.js — React Entry Point
 // ============================================================
 import React from "react";
 import ReactDOM from "react-dom/client";

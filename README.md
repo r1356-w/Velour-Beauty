@@ -7,6 +7,7 @@
 
 ## 📋 Table of Contents
 - [Project Overview](#project-overview)
+- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Repository Structure](#repository-structure)
 - [Current Runtime Architecture](#current-runtime-architecture)
@@ -36,7 +37,40 @@ The UI is styled with **Tailwind CSS** and uses a purple-forward brand system.
 
 ---
 
-## 🛠️ Tech Stack
+## � Screenshots
+
+### Application Overview
+<div align="center">
+
+| Home Page | Product Listing | Product Details |
+|-----------|----------------|-----------------|
+| ![Home](screens/1.PNG) | ![Products](screens/2.PNG) | ![Product Details](screens/3.PNG) |
+
+| Shopping Cart | Checkout | User Dashboard |
+|---------------|----------|----------------|
+| ![Cart](screens/4.PNG) | ![Checkout](screens/5.PNG) | ![Dashboard](screens/6.PNG) |
+
+| Admin Dashboard | User Management | Order Management |
+|-----------------|-----------------|-----------------|
+| ![Admin Dashboard](screens/7.PNG) | ![User Management](screens/8.PNG) | ![Order Management](screens/9.PNG) |
+
+| Product Categories | Search Results | Wishlist |
+|-------------------|----------------|----------|
+| ![Categories](screens/11.PNG) | ![Search](screens/12.PNG) | ![Wishlist](screens/13.PNG) |
+
+| Order History | Product Reviews | Admin Products |
+|---------------|-----------------|----------------|
+| ![Order History](screens/14.PNG) | ![Reviews](screens/15.PNG) | ![Admin Products](screens/16.PNG) |
+
+| Admin Categories | Admin Orders | Settings |
+|------------------|---------------|----------|
+| ![Admin Categories](screens/17.PNG) | ![Admin Orders](screens/18.PNG) | ![Settings](screens/15.PNG) |
+
+</div>
+
+---
+
+## ��️ Tech Stack
 
 ### Frontend
 - **React 18**

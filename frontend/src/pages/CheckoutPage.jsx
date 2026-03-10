@@ -1,5 +1,5 @@
 // ============================================================
-// pages/CheckoutPage.jsx — صفحة إتمام الشراء (3 خطوات)
+// pages/CheckoutPage.jsx — Checkout Page (3 steps)
 // ============================================================
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";

@@ -36,15 +36,15 @@ const allowedOrigins = new Set([
   "https://velour-beauty-store.onrender.com",
 ]);
 
-// استبدل كود cors القديم بهذا في ملف backend/server.js
+// Replace old cors code with this in backend/server.js
 app.use(cors({
-  origin: true, // يسمح لأي رابط بالوصول (حل جذري لمشكلة Render)
+  origin: true, // Allows any origin to access (radical fix for Render issue)
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
 }));
 
-// أضف هذا السطر أيضاً تحت الـ cors مباشرة للتأكد
+// Add this line right below cors for extra safety
 app.options('*', cors());
 app.use(express.json({ limit: "2mb" }));
 

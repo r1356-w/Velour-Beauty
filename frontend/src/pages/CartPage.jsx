@@ -1,5 +1,5 @@
 // ============================================================
-// pages/CartPage.jsx — صفحة سلة التسوق
+// pages/CartPage.jsx — Shopping Cart Page
 // ============================================================
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";

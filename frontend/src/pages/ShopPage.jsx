@@ -1,5 +1,5 @@
 // ============================================================
-// pages/ShopPage.jsx — صفحة المتجر مع الفلترة والترتيب
+// pages/ShopPage.jsx — Shop page with filtering and sorting
 // ============================================================
 import React, { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
