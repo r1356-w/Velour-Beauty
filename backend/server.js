@@ -116,10 +116,10 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
         images: [
-          `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
-          `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`
+          `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
+          `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`
         ],
         description: "Ultra-fine translucent powder that blurs imperfections and locks makeup in place for 16 hours.",
         formula: "Silica, Nylon-12, Mica, Bismuth Oxychloride, Dimethicone, Phenoxyethanol. Fragrance-free. Talc-free.",
@@ -135,8 +135,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`],
         description: "Micro-milled powder that diffuses light for a soft-focus, camera-ready finish.",
         formula: "Silica, Lauroyl Lysine, Magnesium Stearate, Kaolin, Tocopheryl Acetate.",
         shades: ["Light", "Medium", "Deep"],
@@ -151,8 +151,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`],
         description: "Professional-grade HD powder for flawless photography and video.",
         formula: "Silica, Dimethicone, Nylon-12, Talc, Iron Oxides.",
         shades: ["Fair", "Light", "Medium", "Tan", "Deep"],
@@ -167,8 +167,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`],
         description: "Radiant finishing powder with subtle luminous particles for a natural glow.",
         formula: "Mica, Silica, Nylon-12, Titanium Dioxide, Iron Oxides.",
         shades: ["Champagne", "Rose Gold", "Bronze"],
@@ -183,8 +183,8 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`],
         description: "Oil-absorbing translucent powder that controls shine for 12 hours.",
         formula: "Silica, Corn Starch, Kaolin, Zinc Oxide.",
         shades: ["Translucent", "Deep Translucent"],
@@ -199,8 +199,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`],
         description: "Luxurious setting powder with fine diamond-like particles for a radiant finish.",
         formula: "Mica, Synthetic Fluorphlogopite, Silica, Dimethicone.",
         shades: ["Crystal", "Pink Diamond", "Blue Diamond"],
@@ -216,8 +216,8 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Eyeshadow",
         categoryId: createdCategories[1]._id, // Eyeshadow
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`],
         description: "12-pan palette ranging from soft lavenders to smoky deep plums. Mattes, satins & glitters.",
         formula: "Talc, Mica, Magnesium Stearate, Dimethicone. Paraben-free.",
         shades: ["Multi-palette"],
@@ -232,8 +232,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Eyeshadow",
         categoryId: createdCategories[1]._id, // Eyeshadow
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`],
         description: "Intensely pigmented mono shadow with a buttery texture. Layer or blend solo.",
         formula: "Mica, Synthetic Fluorphlogopite, Talc, Silica, Alumina.",
         shades: ["Gold Rush", "Rose Quartz", "Midnight", "Copper Dusk", "Violet Haze"],
@@ -248,8 +248,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Eyeshadow",
         categoryId: createdCategories[1]._id, // Eyeshadow
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`],
         description: "Blinding duochrome topper that transforms any look into something extraordinary.",
         formula: "Mica, Synthetic Fluorphlogopite, Boron Nitride, Cyclopentasiloxane.",
         shades: ["Rose Gold", "Champagne", "Holographic"],
@@ -264,8 +264,8 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Lipstick",
         categoryId: createdCategories[2]._id, // Lipstick
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`],
         description: "Full-coverage matte that glides on like silk and stays put for 8 hours. Infused with jojoba oil.",
         formula: "Isododecane, Trimethylsiloxysilicate, Cyclopentasiloxane, Jojoba Seed Oil, Vitamin E.",
         shades: ["Berry Bliss", "Nude Ambition", "Crimson Crush", "Mauve Dream", "Terracotta Kiss"],
@@ -280,8 +280,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Lipstick",
         categoryId: createdCategories[2]._id, // Lipstick
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`],
         description: "High-shine, non-sticky gloss with plumping peptides for a glassy finish.",
         formula: "Polybutene, Hydrogenated Polyisobutene, Octyldodecanol, Hexylresorcinol.",
         shades: ["Crystal Clear", "Pink Haze", "Coral Pop", "Berry Sheer"],
@@ -297,8 +297,8 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Foundation",
         categoryId: createdCategories[3]._id, // Foundation
-        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`,
-        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`],
+        image: `http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`,
+        images: [`http://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`],
         description: "Lightweight serum-foundation hybrid. Medium-to-full buildable coverage with skincare benefits.",
         formula: "Water, Cyclopentasiloxane, Niacinamide, Hyaluronic Acid, SPF 30. 42 shades.",
         shades: ["N10", "N20", "W20", "W30", "C10", "C20", "N40", "W40"],
