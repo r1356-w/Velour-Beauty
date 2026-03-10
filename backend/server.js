@@ -116,10 +116,10 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1`,
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
         images: [
-          `https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1`,
-          `https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=2`
+          `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg`,
+          `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`
         ],
         description: "Ultra-fine translucent powder that blurs imperfections and locks makeup in place for 16 hours.",
         formula: "Silica, Nylon-12, Mica, Bismuth Oxychloride, Dimethicone, Phenoxyethanol. Fragrance-free. Talc-free.",
@@ -135,8 +135,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=3`,
-        images: [`https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=3`],
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg`],
         description: "Micro-milled powder that diffuses light for a soft-focus, camera-ready finish.",
         formula: "Silica, Lauroyl Lysine, Magnesium Stearate, Kaolin, Tocopheryl Acetate.",
         shades: ["Light", "Medium", "Deep"],
@@ -151,8 +151,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=4`,
-        images: [`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=4`],
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p3.jpg`],
         description: "Professional-grade HD powder for flawless photography and video.",
         formula: "Silica, Dimethicone, Nylon-12, Talc, Iron Oxides.",
         shades: ["Fair", "Light", "Medium", "Tan", "Deep"],
@@ -167,8 +167,8 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=5`,
-        images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=5`],
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p4.jpg`],
         description: "Radiant finishing powder with subtle luminous particles for a natural glow.",
         formula: "Mica, Silica, Nylon-12, Titanium Dioxide, Iron Oxides.",
         shades: ["Champagne", "Rose Gold", "Bronze"],
@@ -183,8 +183,8 @@ app.get("/api/seed", async (req, res) => {
         featured: true,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=6`,
-        images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=6`],
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p5.jpg`],
         description: "Oil-absorbing translucent powder that controls shine for 12 hours.",
         formula: "Silica, Corn Starch, Kaolin, Zinc Oxide.",
         shades: ["Translucent", "Deep Translucent"],
@@ -199,44 +199,110 @@ app.get("/api/seed", async (req, res) => {
         featured: false,
         category: "Loose Powder",
         categoryId: createdCategories[0]._id, // Loose Powder
-        image: `https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=7`,
-        images: [`https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80&sig=7`],
-        description: "Luxurious setting powder with diamond dust for a radiant finish.",
-        formula: "Diamond Powder, Silica, Mica, Vitamin E.",
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p6.jpg`],
+        description: "Luxurious setting powder with fine diamond-like particles for a radiant finish.",
+        formula: "Mica, Synthetic Fluorphlogopite, Silica, Dimethicone.",
         shades: ["Crystal", "Pink Diamond", "Blue Diamond"],
-        tags: ["luxury", "radiant"]
+        tags: ["luxury", "shimmer"]
       },
       {
-        name: "Nude Eyeshadow Palette",
+        name: "Amethyst Dreams Palette",
         brand: "Velour Beauty",
-        price: 48.00,
-        stock: 89,
-        sold: 445,
+        price: 52.00,
+        originalPrice: 65.00,
+        stock: 67,
+        sold: 521,
         featured: true,
         category: "Eyeshadow",
         categoryId: createdCategories[1]._id, // Eyeshadow
-        image: `https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=8`,
-        images: [`https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=8`],
-        description: "12-shade nude palette with matte and shimmer finishes.",
-        formula: "Mica, Iron Oxides, Titanium Dioxide, Talc.",
-        shades: ["Ivory", "Beige", "Taupe", "Brown", "Chocolate", "Black"],
-        tags: ["palette", "nude", "versatile"]
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p7.jpg`],
+        description: "12-pan palette ranging from soft lavenders to smoky deep plums. Mattes, satins & glitters.",
+        formula: "Talc, Mica, Magnesium Stearate, Dimethicone. Paraben-free.",
+        shades: ["Multi-palette"],
+        tags: ["bestseller", "cruelty-free"]
       },
       {
-        name: "Smoky Eye Kit",
-        brand: "Velour Beauty",
-        price: 52.00,
-        stock: 67,
-        sold: 178,
+        name: "Gilded Hour Single Shadow",
+        brand: "Aurore",
+        price: 18.00,
+        stock: 210,
+        sold: 87,
         featured: false,
         category: "Eyeshadow",
         categoryId: createdCategories[1]._id, // Eyeshadow
-        image: `https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=9`,
-        images: [`https://images.unsplash.com/photo-1556228720-195a93d8b4c4?w=500&q=80&sig=9`],
-        description: "Complete smoky eye kit with 6 essential shades.",
-        formula: "Mica, Iron Oxides, Ultramarines.",
-        shades: ["Black", "Charcoal", "Grey", "Silver", "White", "Nude"],
-        tags: ["smoky", "kit", "dramatic"]
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p8.jpg`],
+        description: "Intensely pigmented mono shadow with a buttery texture. Layer or blend solo.",
+        formula: "Mica, Synthetic Fluorphlogopite, Talc, Silica, Alumina.",
+        shades: ["Gold Rush", "Rose Quartz", "Midnight", "Copper Dusk", "Violet Haze"],
+        tags: ["vegan"]
+      },
+      {
+        name: "Rose Gold Shimmer Topper",
+        brand: "Aurore",
+        price: 22.00,
+        stock: 144,
+        sold: 203,
+        featured: false,
+        category: "Eyeshadow",
+        categoryId: createdCategories[1]._id, // Eyeshadow
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p9.jpg`],
+        description: "Blinding duochrome topper that transforms any look into something extraordinary.",
+        formula: "Mica, Synthetic Fluorphlogopite, Boron Nitride, Cyclopentasiloxane.",
+        shades: ["Rose Gold", "Champagne", "Holographic"],
+        tags: ["new", "vegan"]
+      },
+      {
+        name: "Plush Velvet Lip Colour",
+        brand: "Velour Beauty",
+        price: 26.00,
+        stock: 154,
+        sold: 633,
+        featured: true,
+        category: "Lipstick",
+        categoryId: createdCategories[2]._id, // Lipstick
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p10.jpg`],
+        description: "Full-coverage matte that glides on like silk and stays put for 8 hours. Infused with jojoba oil.",
+        formula: "Isododecane, Trimethylsiloxysilicate, Cyclopentasiloxane, Jojoba Seed Oil, Vitamin E.",
+        shades: ["Berry Bliss", "Nude Ambition", "Crimson Crush", "Mauve Dream", "Terracotta Kiss"],
+        tags: ["bestseller", "cruelty-free", "vegan"]
+      },
+      {
+        name: "Glass Glow Lip Gloss",
+        brand: "Lumière Lab",
+        price: 21.00,
+        stock: 98,
+        sold: 314,
+        featured: false,
+        category: "Lipstick",
+        categoryId: createdCategories[2]._id, // Lipstick
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p11.jpg`],
+        description: "High-shine, non-sticky gloss with plumping peptides for a glassy finish.",
+        formula: "Polybutene, Hydrogenated Polyisobutene, Octyldodecanol, Hexylresorcinol.",
+        shades: ["Crystal Clear", "Pink Haze", "Coral Pop", "Berry Sheer"],
+        tags: ["new", "vegan"]
+      },
+      {
+        name: "Silk Canvas Serum Foundation",
+        brand: "Velour Beauty",
+        price: 48.00,
+        originalPrice: 58.00,
+        stock: 72,
+        sold: 289,
+        featured: true,
+        category: "Foundation",
+        categoryId: createdCategories[3]._id, // Foundation
+        image: `https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`,
+        images: [`https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p12.jpg`],
+        description: "Lightweight serum-foundation hybrid. Medium-to-full buildable coverage with skincare benefits.",
+        formula: "Water, Cyclopentasiloxane, Niacinamide, Hyaluronic Acid, SPF 30. 42 shades.",
+        shades: ["N10", "N20", "W20", "W30", "C10", "C20", "N40", "W40"],
+        tags: ["bestseller", "cruelty-free"]
       }
     ];
     
