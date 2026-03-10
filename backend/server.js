@@ -34,6 +34,8 @@ const allowedOrigins = new Set([
   "http://127.0.0.1:3001",
   "https://velour-beauty.onrender.com",
   "https://velour-beauty-store.onrender.com",
+  "http://site53742-qpl6iw.scloudsite101.com/velour",
+  "http://site53742-qpl6iw.scloudsite101.com",
 ]);
 
 // Replace old cors code with this in backend/server.js
