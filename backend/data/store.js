@@ -224,14 +224,4 @@ const promoCodes = [
 ];
 
 
-const withLocalImages = products.map((product) => {
-  const image = `/assets/products/${product.id}.jpg`;
-
-  return {
-    ...product,
-    image,
-    images: [image],
-  };
-});
-
-module.exports = { users, categories, products: withLocalImages, reviews, orders, carts, wishlists, promoCodes };
+module.exports = { users, categories, products, reviews, orders, carts, wishlists, promoCodes };
