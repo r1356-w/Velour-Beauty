@@ -1,9 +1,9 @@
 // ============================================================
-// routes/orders.js — مسارات الطلبات
-//   GET  /api/orders           — طلبات المستخدم الحالي
-//   GET  /api/orders/:id       — تفاصيل طلب واحد
-//   POST /api/orders           — إتمام الشراء (Checkout)
-//   PUT  /api/orders/:id/status— تحديث حالة الطلب (admin)
+// routes/orders.js — Order Routes
+//   GET  /api/orders           — Current user orders
+//   GET  /api/orders/:id       — Single order details
+//   POST /api/orders           — Checkout
+//   PUT  /api/orders/:id/status— Update order status (admin)
 // ============================================================
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
@@ -13,7 +13,7 @@ const { orders, carts, products, promoCodes } = require("../data/store");
 const { protect, adminOnly }                  = require("../middleware/auth");
 
 // ────────────────────────────────────────────────
-//  GET /api/orders — طلبات المستخدم الحالي
+//  GET /api/orders — Current user orders
 // ────────────────────────────────────────────────
 router.get("/", protect, (req, res) => {
   const userOrders = orders.filter((o) => o.userId === req.user.id);
@@ -21,21 +21,21 @@ router.get("/", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  GET /api/orders/:id — تفاصيل طلب
+//  GET /api/orders/:id — Order details
 // ────────────────────────────────────────────────
 router.get("/:id", protect, (req, res) => {
   const order = orders.find((o) => o.id === req.params.id);
-  if (!order) return res.status(404).json({ success: false, message: "الطلب غير موجود" });
+  if (!order) return res.status(404).json({ success: false, message: "Order not found" });
 
   if (order.userId !== req.user.id && req.user.role !== "admin") {
-    return res.status(403).json({ success: false, message: "غير مصرح بالوصول" });
+    return res.status(403).json({ success: false, message: "Access denied" });
   }
 
   res.json({ success: true, order });
 });
 
 // ────────────────────────────────────────────────
-//  POST /api/orders — إتمام الشراء
+//  POST /api/orders — Checkout
 // ────────────────────────────────────────────────
 router.post("/", protect, (req, res) => {
   const { shippingAddress, paymentMethod, promoCode } = req.body;
@@ -117,7 +117,7 @@ router.post("/", protect, (req, res) => {
 // ────────────────────────────────────────────────
 router.put("/:id/status", protect, adminOnly, (req, res) => {
   const order = orders.find((o) => o.id === req.params.id);
-  if (!order) return res.status(404).json({ success: false, message: "الطلب غير موجود" });
+  if (!order) return res.status(404).json({ success: false, message: "Order not found" });
 
   const { status, label } = req.body;
   order.status    = status;
