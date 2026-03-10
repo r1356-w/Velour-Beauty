@@ -823,38 +823,8 @@ const slugify = (value) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
-const buildProductImages = (product) => {
-  const productSlug = slugify(product.name);
-  const primaryText = encodeURIComponent(`${product.category} | ${product.name}`);
-  const detailText = encodeURIComponent(`${product.brand} | ${product.name} Detail`);
-  const packText = encodeURIComponent(`${product.name} | Packaging`);
 
-  const image = `https://placehold.co/800x800/png?text=${primaryText}&id=${productSlug}-main`;
-  const detail = `https://placehold.co/800x800/png?text=${detailText}&id=${productSlug}-detail`;
-  const packaging = `https://placehold.co/800x800/png?text=${packText}&id=${productSlug}-pack`;
-
-  return { image, images: [image, detail, packaging] };
-};
-
-const preparedProducts = sampleData.products.map((product) => ({
-  ...product,
-  ...buildProductImages(product)
-}));
-
-const productNameSet = new Set();
-const productImageSet = new Set();
-
-for (const product of preparedProducts) {
-  if (productNameSet.has(product.name)) {
-    throw new Error(`Duplicate product name detected in seed data: ${product.name}`);
-  }
-  productNameSet.add(product.name);
-
-  if (productImageSet.has(product.image)) {
-    throw new Error(`Duplicate product image detected in seed data: ${product.image}`);
-  }
-  productImageSet.add(product.image);
-}
+const preparedProducts = sampleData.products;
 
 const seedDatabase = async () => {
   try {

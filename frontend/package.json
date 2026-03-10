@@ -2,6 +2,7 @@
   "name": "velour-beauty-frontend",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://site53742-qpl6iw.scloudsite101.com//velour/",
   "dependencies": {
     "axios": "^1.6.2",
     "http-proxy-middleware": "^3.0.5",
