@@ -37,8 +37,10 @@ const allowedOrigins = new Set([
 ]);
 
 app.use(cors({
-  origin: true, // يسمح لجميع المصادر بالاتصال (للتيقن من حل المشكلة)
+  origin: true, // هذا سيجعل السيرفر يقبل الطلبات من أي رابط (بما فيها رابط المتجر)
   credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 app.use(express.json({ limit: "2mb" }));
 
