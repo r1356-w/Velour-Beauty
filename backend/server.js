@@ -36,17 +36,10 @@ const allowedOrigins = new Set([
   "https://velour-beauty-store.onrender.com",
 ]);
 
-app.use(
-  cors({
-    origin(origin, callback) {
-      if (!origin || allowedOrigins.has(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("CORS blocked for origin: " + origin));
-    },
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: true, // يسمح لجميع المصادر بالاتصال (للتيقن من حل المشكلة)
+  credentials: true,
+}));
 app.use(express.json({ limit: "2mb" }));
 
 app.get("/api/health", (req, res) => {

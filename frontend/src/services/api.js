@@ -4,7 +4,7 @@
 // ============================================================
 import axios from "axios";
 
-// Use environment variable from .env.production
+// Use environment variable from .env.production with strong fallback
 const BASE_URL = process.env.REACT_APP_API_URL || "https://velour-beauty.onrender.com/api";
 
 // إنشاء نسخة Axios مخصصة
