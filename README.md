@@ -31,46 +31,45 @@
 - 🛒 Cart and checkout flow
 - ❤️ Wishlist
 - 👤 Admin dashboard views for users, orders, and reviews
-- 🔐 JWT-based authentication (register/login/me)
 
 The UI is styled with **Tailwind CSS** and uses a purple-forward brand system.
 
 ---
 
-## � Screenshots
+## 🖼️ Screenshots
 
 ### Application Overview
 <div align="center">
 
-| Home Page | Product Listing | Product Details |
-|-----------|----------------|-----------------|
+|  |  |  |
+|---|---|---|
 | ![Home](screens/1.PNG) | ![Products](screens/2.PNG) | ![Product Details](screens/3.PNG) |
 
-| Shopping Cart | Checkout | User Dashboard |
-|---------------|----------|----------------|
+|  |  |  |
+|---|---|---|
 | ![Cart](screens/4.PNG) | ![Checkout](screens/5.PNG) | ![Dashboard](screens/6.PNG) |
 
-| Admin Dashboard | User Management | Order Management |
-|-----------------|-----------------|-----------------|
+|  |  |  |
+|---|---|---|
 | ![Admin Dashboard](screens/7.PNG) | ![User Management](screens/8.PNG) | ![Order Management](screens/9.PNG) |
 
-| Product Categories | Search Results | Wishlist |
-|-------------------|----------------|----------|
+|  |  |  |
+|---|---|---|
 | ![Categories](screens/11.PNG) | ![Search](screens/12.PNG) | ![Wishlist](screens/13.PNG) |
 
-| Order History | Product Reviews | Admin Products |
-|---------------|-----------------|----------------|
+|  |  |  |
+|---|---|---|
 | ![Order History](screens/14.PNG) | ![Reviews](screens/15.PNG) | ![Admin Products](screens/16.PNG) |
 
-| Admin Categories | Admin Orders | Settings |
-|------------------|---------------|----------|
+|  |  |  |
+|---|---|---|
 | ![Admin Categories](screens/17.PNG) | ![Admin Orders](screens/18.PNG) | ![Settings](screens/15.PNG) |
 
 </div>
 
 ---
 
-## ��️ Tech Stack
+## 🛠️ Tech Stack
 
 ### Frontend
 - **React 18**
@@ -378,6 +377,69 @@ curl http://127.0.0.1:5010/api/health
 - Confirm MongoDB is running
 - Confirm `MONGODB_URI` is correct
 - Check backend terminal logs for stack traces
+
+## 🚀 Live Demo
+
+**🌐 Deployed Application:** [https://velour-beauty-store.onrender.com](https://velour-beauty-store.onrender.com)
+
+Experience the full Velour Beauty e-commerce platform with:
+- 🛍️ Product browsing and filtering
+- 🛒 Shopping cart and checkout
+- 👤 User authentication
+- ❤️ Wishlist functionality
+- 🔐 Admin dashboard
+
+---
+
+## 🌍 Deployment Guide
+
+### � Deploy on Render.com
+
+#### **Backend Deployment:**
+1. **Create Render Account**
+   - Go to [render.com](https://render.com)
+   - Sign up with GitHub
+
+2. **Create Backend Service**
+   - Click "New" → "Web Service"
+   - Connect your GitHub repository
+   - **Root Directory:** `backend`
+   - **Build Command:** `npm install`
+   - **Start Command:** `npm start`
+   - **Environment Variables:**
+     ```
+     NODE_VERSION=18
+     MONGODB_URI=your_mongodb_connection_string
+     JWT_SECRET=your_secret_key
+     CLIENT_URL=https://your-frontend-url.onrender.com
+     ```
+
+3. **Deploy Backend**
+   - Click "Create Web Service"
+   - Wait for deployment (2-3 minutes)
+   - Note your backend URL
+
+#### **Frontend Deployment:**
+1. **Create Frontend Service**
+   - Click "New" → "Static Site"
+   - Connect same GitHub repository
+   - **Root Directory:** `frontend`
+   - **Build Command:** `npm install && npm run build`
+   - **Publish Directory:** `build`
+   - **Environment Variables:**
+     ```
+     REACT_APP_API_URL=https://your-backend-url.onrender.com/api
+     ```
+
+2. **Deploy Frontend**
+   - Click "Create Static Site"
+   - Wait for deployment (3-5 minutes)
+   - Your site will be live!
+
+#### **⚙️ Important Settings:**
+- **Auto-Deploy:** Enable for automatic updates
+- **Custom Domain:** Add your domain if desired
+- **Environment Variables:** Never commit secrets to Git
 
 ---
 
