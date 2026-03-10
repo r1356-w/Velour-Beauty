@@ -1,7 +1,7 @@
 // ============================================================
-// context/ToastContext.jsx — نظام الإشعارات
-// الاستخدام: const { toast } = useToast();
-//            toast.success("تمت الإضافة!");
+// context/ToastContext.jsx — Notification System
+// Usage: const { toast } = useToast();
+//        toast.success("Added successfully!");
 // ============================================================
 import React, { createContext, useContext, useState, useCallback } from "react";
 
@@ -27,7 +27,7 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={{ toast }}>
       {children}
-      {/* حاوية الإشعارات */}
+      {/* Notification container */}
       <div className="fixed bottom-6 right-6 z-[9999] flex flex-col gap-3">
         {toasts.map((t) => (
           <div key={t.id} className={`toast ${t.type}`}>

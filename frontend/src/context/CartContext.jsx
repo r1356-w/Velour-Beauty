@@ -1,6 +1,6 @@
 // ============================================================
-// context/CartContext.jsx — إدارة سلة التسوق
-// يتزامن مع API عند تسجيل الدخول
+// context/CartContext.jsx — Shopping Cart Management
+// Syncs with API when logged in
 // ============================================================
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { cartAPI } from "../services/api";
@@ -13,14 +13,14 @@ export const CartProvider = ({ children }) => {
   const [cart,    setCart]    = useState({ items: [], subtotal: 0, itemCount: 0 });
   const [loading, setLoading] = useState(false);
 
-  // جلب السلة عند تسجيل الدخول
+  // Fetch cart when user logs in
   const fetchCart = useCallback(async () => {
     if (!user) { setCart({ items: [], subtotal: 0, itemCount: 0 }); return; }
     setLoading(true);
     try {
       const { data } = await cartAPI.get();
       setCart(data.cart);
-    } catch { /* تجاهل الأخطاء الصامتة */ }
+    } catch { /* Ignore silent errors */ }
     finally { setLoading(false); }
   }, [user]);
 
