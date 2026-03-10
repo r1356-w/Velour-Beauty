@@ -4,8 +4,8 @@
 // ============================================================
 import axios from "axios";
 
-// Use global API URL from config.js
-const BASE_URL = window.API_BASE_URL || "https://velour-beauty.onrender.com/api";
+// Hardcoded API URL for guaranteed connection
+const BASE_URL = "https://velour-beauty.onrender.com/api";
 
 // إنشاء نسخة Axios مخصصة
 const api = axios.create({ baseURL: BASE_URL });
@@ -13,8 +13,9 @@ const api = axios.create({ baseURL: BASE_URL });
 // Debug logging
 console.log("API Base URL:", BASE_URL);
 
-// إرفاق رمز JWT تلقائياً مع كل طلب
+// Add request interceptor for debugging
 api.interceptors.request.use((config) => {
+  console.log("Making request to:", config.baseURL + config.url);
   const token = localStorage.getItem("velour_token");
   if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
