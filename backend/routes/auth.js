@@ -1,8 +1,8 @@
 // ============================================================
-// routes/auth.js — مسارات المصادقة
-//   POST /api/auth/register — إنشاء حساب جديد
-//   POST /api/auth/login    — تسجيل الدخول
-//   GET  /api/auth/me       — جلب بيانات المستخدم الحالي
+// routes/auth.js — Authentication Routes
+//   POST /api/auth/register — Create new account
+//   POST /api/auth/login    — User login
+//   GET  /api/auth/me       — Get current user data
 // ============================================================
 const express = require("express");
 const bcrypt  = require("bcryptjs");
@@ -13,7 +13,7 @@ const router  = express.Router();
 const { protect }                  = require("../middleware/auth");
 const { JWT_SECRET, JWT_EXPIRES_IN } = require("../config");
 
-// ── مساعد: إنشاء رمز JWT ──────────────────────
+// ── Helper: Create JWT token ──────────────────────
 const signToken = (user) =>
   jwt.sign(
     { id: user._id, name: user.name, email: user.email, role: user.role },
@@ -21,7 +21,7 @@ const signToken = (user) =>
     { expiresIn: JWT_EXPIRES_IN }
   );
 
-// ── مساعد: إزالة كلمة المرور من الاستجابة ──────
+// ── Helper: Remove password from response ──────
 const safeUser = (u) => ({
   id: u._id,
   name: u.name,
@@ -37,25 +37,25 @@ router.post("/register", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // التحقق من الحقول المطلوبة
+    // Validate required fields
     if (!name || !email || !password) {
-      return res.status(400).json({ success: false, message: "جميع الحقول مطلوبة" });
+      return res.status(400).json({ success: false, message: "All fields are required" });
     }
     if (password.length < 6) {
-      return res.status(400).json({ success: false, message: "كلمة المرور يجب أن تكون 6 أحرف على الأقل" });
+      return res.status(400).json({ success: false, message: "Password must be at least 6 characters" });
     }
 
-    // التحقق من تكرار البريد الإلكتروني
+    // Check for duplicate email
     const exists = await User.findOne({ email: email.toLowerCase() });
     if (exists) {
-      return res.status(409).json({ success: false, message: "البريد الإلكتروني مسجل مسبقاً" });
+      return res.status(409).json({ success: false, message: "Email already registered" });
     }
 
-    // إنشاء المستخدم الجديد
+    // Create new user
     const newUser = new User({
       name: name.trim(),
       email: email.toLowerCase().trim(),
-      password: password, // سيتم تشفيرها تلقائياً via pre-save hook
+      password: password, // Will be hashed automatically via pre-save hook
       role: "user",
     });
 
@@ -65,7 +65,7 @@ router.post("/register", async (req, res) => {
     res.status(201).json({ success: true, token, user: safeUser(newUser) });
   } catch (err) {
     console.error("Register error:", err);
-    res.status(500).json({ success: false, message: "خطأ في الخادم" });
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 
@@ -77,38 +77,38 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ success: false, message: "البريد وكلمة المرور مطلوبان" });
+      return res.status(400).json({ success: false, message: "Email and password are required" });
     }
 
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
-      return res.status(401).json({ success: false, message: "بيانات الدخول غير صحيحة" });
+      return res.status(401).json({ success: false, message: "Invalid credentials" });
     }
 
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(401).json({ success: false, message: "بيانات الدخول غير صحيحة" });
+      return res.status(401).json({ success: false, message: "Invalid credentials" });
     }
 
     const token = signToken(user);
     res.json({ success: true, token, user: safeUser(user) });
   } catch (err) {
     console.error("Login error:", err);
-    res.status(500).json({ success: false, message: "خطأ في الخادم" });
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 
 // ────────────────────────────────────────────────
-//  GET /api/auth/me  (محمي)
+//  GET /api/auth/me  (Protected)
 // ────────────────────────────────────────────────
 router.get("/me", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
-    if (!user) return res.status(404).json({ success: false, message: "المستخدم غير موجود" });
+    if (!user) return res.status(404).json({ success: false, message: "User not found" });
     res.json({ success: true, user: safeUser(user) });
   } catch (err) {
     console.error("Get user error:", err);
-    res.status(500).json({ success: false, message: "خطأ في الخادم" });
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
 

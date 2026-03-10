@@ -1,17 +1,17 @@
 // ============================================================
-// routes/cart.js — مسارات سلة التسوق
-//   GET    /api/cart              — جلب السلة
-//   POST   /api/cart              — إضافة منتج
-//   PUT    /api/cart/:productId   — تحديث الكمية
-//   DELETE /api/cart/:productId   — حذف منتج
-//   DELETE /api/cart              — تفريغ السلة
+// routes/cart.js — Shopping Cart Routes
+//   GET    /api/cart              — Get cart
+//   POST   /api/cart              — Add product
+//   PUT    /api/cart/:productId   — Update quantity
+//   DELETE /api/cart/:productId   — Delete product
+//   DELETE /api/cart              — Clear cart
 // ============================================================
 const express = require("express");
 const router  = express.Router();
 const { carts, products } = require("../data/store");
 const { protect }         = require("../middleware/auth");
 
-// ── مساعد: بناء استجابة السلة مع بيانات المنتجات ──
+// ── Helper: Build cart response with product data ──
 const buildCart = (userId) => {
   const items = carts[userId] || [];
   const enriched = items.map((item) => {
@@ -36,14 +36,14 @@ router.get("/", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  POST /api/cart — إضافة أو زيادة الكمية
+//  POST /api/cart — Add or increase quantity
 // ────────────────────────────────────────────────
 router.post("/", protect, (req, res) => {
   const { productId, qty = 1, shade } = req.body;
-  if (!productId) return res.status(400).json({ success: false, message: "productId مطلوب" });
+  if (!productId) return res.status(400).json({ success: false, message: "productId is required" });
 
   const product = products.find((p) => p.id === productId);
-  if (!product) return res.status(404).json({ success: false, message: "المنتج غير موجود" });
+  if (!product) return res.status(404).json({ success: false, message: "Product not found" });
 
   if (!carts[req.user.id]) carts[req.user.id] = [];
 
@@ -61,15 +61,15 @@ router.post("/", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  PUT /api/cart/:productId — تحديث الكمية
+//  PUT /api/cart/:productId — Update quantity
 // ────────────────────────────────────────────────
 router.put("/:productId", protect, (req, res) => {
   const { qty, shade } = req.body;
   if (!carts[req.user.id])
-    return res.status(404).json({ success: false, message: "السلة فارغة" });
+    return res.status(404).json({ success: false, message: "Cart is empty" });
 
   const item = carts[req.user.id].find((i) => i.productId === req.params.productId);
-  if (!item) return res.status(404).json({ success: false, message: "المنتج ليس في السلة" });
+  if (!item) return res.status(404).json({ success: false, message: "Product not in cart" });
 
   item.qty = Math.max(1, Math.min(parseInt(qty), 10));
   if (shade !== undefined) item.shade = shade;
@@ -78,7 +78,7 @@ router.put("/:productId", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  DELETE /api/cart/:productId — إزالة منتج
+//  DELETE /api/cart/:productId — Remove product
 // ────────────────────────────────────────────────
 router.delete("/:productId", protect, (req, res) => {
   if (!carts[req.user.id]) {
@@ -91,7 +91,7 @@ router.delete("/:productId", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  DELETE /api/cart — تفريغ السلة بالكامل
+//  DELETE /api/cart — Clear entire cart
 // ────────────────────────────────────────────────
 router.delete("/", protect, (req, res) => {
   carts[req.user.id] = [];

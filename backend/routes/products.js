@@ -1,11 +1,11 @@
 // ============================================================
-// routes/products.js — مسارات المنتجات
-//   GET    /api/products           — قائمة المنتجات مع فلترة وترتيب
-//   GET    /api/products/featured  — المنتجات المميزة
-//   GET    /api/products/:id       — تفاصيل منتج
-//   POST   /api/products           — إضافة منتج (admin)
-//   PUT    /api/products/:id       — تعديل منتج (admin)
-//   DELETE /api/products/:id       — حذف منتج (admin)
+// routes/products.js — Product Routes
+//   GET    /api/products           — Product list with filtering and sorting
+//   GET    /api/products/featured  — Featured products
+//   GET    /api/products/:id       — Product details
+//   POST   /api/products           — Add product (admin)
+//   PUT    /api/products/:id       — Update product (admin)
+//   DELETE /api/products/:id       — Delete product (admin)
 // ============================================================
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
@@ -14,7 +14,7 @@ const router = express.Router();
 const { products, categories, reviews } = require("../data/store");
 const { protect, adminOnly }            = require("../middleware/auth");
 
-// ── مساعد: إضافة متوسط التقييم لكل منتج ──────
+// ── Helper: Add average rating to each product ──────
 const withRating = (product) => {
   const productReviews = reviews.filter((r) => r.productId === product.id);
   const avgRating = productReviews.length
@@ -33,13 +33,13 @@ router.get("/", (req, res) => {
 
   let result = products.map(withRating);
 
-  // فلترة بالتصنيف
+  // Filter by category
   if (category) {
     const cat = categories.find((c) => c.slug === category || c.id === category);
     if (cat) result = result.filter((p) => p.categoryId === cat.id);
   }
 
-  // فلترة بالبحث
+  // Filter by search
   if (search) {
     const q = search.toLowerCase();
     result = result.filter(
@@ -47,17 +47,17 @@ router.get("/", (req, res) => {
     );
   }
 
-  // فلترة بالوسوم
+  // Filter by tags
   if (tag) result = result.filter((p) => p.tags?.includes(tag));
 
-  // الترتيب
+  // Sorting
   if (sort === "price_asc")   result.sort((a, b) => a.price - b.price);
   if (sort === "price_desc")  result.sort((a, b) => b.price - a.price);
   if (sort === "rating")      result.sort((a, b) => b.avgRating - a.avgRating);
   if (sort === "bestseller")  result.sort((a, b) => b.sold - a.sold);
   if (sort === "newest")      result.sort((a, b) => b.id.localeCompare(a.id));
 
-  // التصفح (pagination)
+  // Pagination
   const total     = result.length;
   const pageNum   = parseInt(page);
   const limitNum  = parseInt(limit);
@@ -85,7 +85,7 @@ router.get("/featured", (req, res) => {
 // ────────────────────────────────────────────────
 router.get("/:id", (req, res) => {
   const product = products.find((p) => p.id === req.params.id);
-  if (!product) return res.status(404).json({ success: false, message: "المنتج غير موجود" });
+  if (!product) return res.status(404).json({ success: false, message: "Product not found" });
 
   const category = categories.find((c) => c.id === product.categoryId);
   res.json({ success: true, product: { ...withRating(product), category } });
