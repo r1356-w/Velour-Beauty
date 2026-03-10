@@ -1,9 +1,9 @@
 // ============================================================
-// routes/reviews.js — مسارات التقييمات
-//   GET    /api/reviews?productId=  — تقييمات منتج
-//   POST   /api/reviews             — إضافة تقييم (محمي)
-//   PUT    /api/reviews/:id/helpful — تصويت "مفيد"
-//   DELETE /api/reviews/:id         — حذف تقييم
+// routes/reviews.js — Review Routes
+//   GET    /api/reviews?productId=  — Product reviews
+//   POST   /api/reviews             — Add review (protected)
+//   PUT    /api/reviews/:id/helpful — "Helpful" vote
+//   DELETE /api/reviews/:id         — Delete review
 // ============================================================
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
@@ -22,25 +22,25 @@ router.get("/", (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  POST /api/reviews  (محمي)
+//  POST /api/reviews  (protected)
 // ────────────────────────────────────────────────
 router.post("/", protect, (req, res) => {
   const { productId, rating, title, body } = req.body;
 
   if (!productId || !rating || !body) {
-    return res.status(400).json({ success: false, message: "المنتج والتقييم والنص مطلوبة" });
+    return res.status(400).json({ success: false, message: "Product, rating and body are required" });
   }
 
   if (rating < 1 || rating > 5) {
-    return res.status(400).json({ success: false, message: "التقييم يجب أن يكون بين 1 و5" });
+    return res.status(400).json({ success: false, message: "Rating must be between 1 and 5" });
   }
 
-  // منع التقييم المزدوج
+  // Prevent duplicate reviews
   const duplicate = reviews.find(
     (r) => r.productId === productId && r.userId === req.user.id
   );
   if (duplicate) {
-    return res.status(409).json({ success: false, message: "قيّمت هذا المنتج من قبل" });
+    return res.status(409).json({ success: false, message: "You have already reviewed this product" });
   }
 
   const newReview = {
@@ -61,29 +61,29 @@ router.post("/", protect, (req, res) => {
 });
 
 // ────────────────────────────────────────────────
-//  PUT /api/reviews/:id/helpful  (محمي)
+//  PUT /api/reviews/:id/helpful  (protected)
 // ────────────────────────────────────────────────
 router.put("/:id/helpful", protect, (req, res) => {
   const review = reviews.find((r) => r.id === req.params.id);
-  if (!review) return res.status(404).json({ success: false, message: "التقييم غير موجود" });
+  if (!review) return res.status(404).json({ success: false, message: "Review not found" });
 
   review.helpful += 1;
   res.json({ success: true, helpful: review.helpful });
 });
 
 // ────────────────────────────────────────────────
-//  DELETE /api/reviews/:id  (صاحب التقييم أو admin)
+//  DELETE /api/reviews/:id  (review owner or admin)
 // ────────────────────────────────────────────────
 router.delete("/:id", protect, (req, res) => {
   const idx = reviews.findIndex((r) => r.id === req.params.id);
-  if (idx === -1) return res.status(404).json({ success: false, message: "التقييم غير موجود" });
+  if (idx === -1) return res.status(404).json({ success: false, message: "Review not found" });
 
   if (reviews[idx].userId !== req.user.id && req.user.role !== "admin") {
-    return res.status(403).json({ success: false, message: "لا يمكنك حذف تقييم شخص آخر" });
+    return res.status(403).json({ success: false, message: "You cannot delete another user's review" });
   }
 
   reviews.splice(idx, 1);
-  res.json({ success: true, message: "تم حذف التقييم" });
+  res.json({ success: true, message: "Review deleted" });
 });
 
 module.exports = router;
