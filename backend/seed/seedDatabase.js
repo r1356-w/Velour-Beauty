@@ -48,10 +48,10 @@ const sampleData = {
       sold: 342,
       featured: true,
       category: "Loose Powder",
-      image: "https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1",
+      image: "https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg",
       images: [
-        "https://images.unsplash.com/photo-1522336577498-a87b83b8e5f6?w=500&q=80&sig=1",
-        "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500&q=80&sig=2"
+        "https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p1.jpg",
+        "https://site53742-qpl6iw.scloudsite101.com/velour/assets/products/p2.jpg"
       ],
       description: "Ultra-fine translucent powder that blurs imperfections and locks makeup in place for 16 hours.",
       formula: "Silica, Nylon-12, Mica, Bismuth Oxychloride, Dimethicone, Phenoxyethanol. Fragrance-free. Talc-free.",
