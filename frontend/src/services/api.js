@@ -4,14 +4,15 @@
 // ============================================================
 import axios from "axios";
 
-// Hardcoded API URL for guaranteed connection
-const BASE_URL = "https://velour-beauty.onrender.com/api";
+// Use environment variable from .env.production
+const BASE_URL = process.env.REACT_APP_API_URL || "https://velour-beauty.onrender.com/api";
 
 // إنشاء نسخة Axios مخصصة
 const api = axios.create({ baseURL: BASE_URL });
 
-// Debug logging
-console.log("API Base URL:", BASE_URL);
+// Debug logging - show both env and final URL
+console.log("Environment API URL:", process.env.REACT_APP_API_URL);
+console.log("Final API Base URL:", BASE_URL);
 
 // Add request interceptor for debugging
 api.interceptors.request.use((config) => {
